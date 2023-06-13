@@ -14,3 +14,5 @@ Following are the steps to implement this system:
   - Try to ask relevant questions to the book.
   
 If you want to train it on a book of your choice, convert that book into proper json format like the files in repo and then you'll be able to run it!
+
+<img width="770" alt="Screenshot 2023-06-13 at 9 32 05 PM" src="https://github.com/MaazK7/Chatbot-using-OpenAI-API/assets/115479920/4da87cb2-17dd-473f-b7ae-a1e7c30363ea">
