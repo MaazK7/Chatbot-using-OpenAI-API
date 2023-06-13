@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Question-Answering System</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333333;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .input-group input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #dddddd;
+            border-radius: 4px;
+        }
+
+        .input-group input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .input-group input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .answer-container {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 4px;
+        }
+
+        .answer-container p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Question-Answering System</h1>
+        <form action="/ask" method="post">
+            <div class="input-group">
+                <label for="question">Enter your question:</label>
+                <input type="text" id="question" name="question" required>
+            </div>
+            <div class="input-group">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+        <div class="answer-container">
+            <p><strong>Answer:</strong></p>
+            <p id="answer"></p>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle the response and update the answer element
+        function handleResponse(response) {
+            const answerElement = document.getElementById("answer");
+            answerElement.textContent = response.answer;
+        }
+
+        // Submit form using AJAX to handle the response
+        const form = document.querySelector("form");
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const question = document.getElementById("question").value;
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "/ask");
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    handleResponse(response);
+                }
+            };
+            xhr.send("question=" + encodeURIComponent(question));
+        });
+    </script>
+</body>
+</html>
