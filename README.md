@@ -6,7 +6,7 @@ Following are the steps to implement this system:
   - Run generate_embeddings.py. Remember to enter you OPENAI API Key in every py file.
   - This should generate a file 'pages_with_embeddings.json'.
   - If you are unable to run the generate_embeddings.py due to token limit, its totally fine.
-  - I have attachted the embeddings that are generated with the name 'pages_with_embeddings.json'.
+  - I have attached the embeddings that are generated with the name 'pages_with_embeddings.json'.
   - Convert this json file into parquet which is done by running json_to_parquet.ipynb
  
 2. Test Time
